@@ -16,9 +16,14 @@ class TodoControl {
             where: {id: req.params.id}
         })
         .then(data=>{
-            res.status(200).json(data)
+            if(data){
+                res.status(200).json(data)
+            } else {
+                res.status(400).json('data not found')
+            }
         })
         .catch(err=>{
+            console.log('err')
             next(err)
         })
     }
