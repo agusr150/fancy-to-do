@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 const port = process.env.PORT || 3000
 
-const TodoRouter = require('./routes/todoRouter')
+const Router = require('./routes/index')
 const ErrorHandler = require('./middleware/errorHandler')
 
 app.use(express.json())
@@ -10,7 +10,7 @@ app.use(express.urlencoded({extended: false}))
 
 app.get('/', (req, res)=> res.send("fancy to-do"))
 
-app.use('/', TodoRouter)
+app.use('/', Router)
 
 
 app.use(ErrorHandler)

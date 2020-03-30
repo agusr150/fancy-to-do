@@ -19,7 +19,7 @@ class TodoControl {
             if(data){
                 res.status(200).json(data)
             } else {
-                res.status(400).json('data not found')
+                res.status(404).json('data not found')
             }
         })
         .catch(err=>{
@@ -31,7 +31,7 @@ class TodoControl {
     static create(req, res, next){
         Todo.create(req.body)
         .then(data=>{
-            res.status(200).json(data)
+            res.status(201).json(data)
         })
         .catch(err=>{
             next(err)
@@ -44,7 +44,12 @@ class TodoControl {
             where: {id: searchId}
         })
         .then(data=>{
-            res.status(200).json('data has been updated')
+            console.log(data[0])
+            if(data[0] === 1 ){
+                res.status(200).json('data has been updated')
+            } else {
+                res.status(404).json('data not found')
+            }
         })
         .catch(err =>{
             next(err)
@@ -52,17 +57,22 @@ class TodoControl {
     }
 
     static delete(req, res, next){
-        let searhId = req.params.id
+        let searchId = req.params.id
         Todo.destroy({
             where : {id: searchId}
         })
         .then(data=>{
-            res.status(200).json('data has been deleted')
+            console.log(data)
+            if(data===1){
+                res.status(200).json('data has been deleted')
+            } else {
+                res.status(404).json('data not found')
+            }
         })
         .catch(err =>{
             next(err)
         })
     }
-}
+}   
 
 module.exports = TodoControl
