@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 const port = process.env.PORT || 3000
 
-const Router = require('./routes/index')
+const Router = require('./routes')
 const ErrorHandler = require('./middleware/errorHandler')
 
 app.use(express.json())
