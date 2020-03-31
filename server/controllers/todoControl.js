@@ -4,7 +4,9 @@ class TodoControl {
     static show(req, res, next){
         Todo.findAll()
         .then(data=>{
-            res.status(200).json(data)
+            res.status(200).json({
+                user: req.userdata.username,
+                data: data})
         })
         .catch(err=>{
             next(err)
@@ -17,7 +19,9 @@ class TodoControl {
         })
         .then(data=>{
             if(data){
-                res.status(200).json(data)
+                res.status(200).json({
+                    user: req.userdata.username,
+                    data: data})
             } else {
                 res.status(404).json('data not found')
             }
@@ -29,9 +33,19 @@ class TodoControl {
     }
 
     static create(req, res, next){
-        Todo.create(req.body)
+        let newData={
+            title : req.body.title,
+            description : req.body.description,
+            status : req.body.status,
+            due_date : req.body.due_date,
+            UserId : req.userdata.id 
+        }
+        Todo.create(newData)
         .then(data=>{
-            res.status(201).json(data)
+            res.status(201).json({
+                user: req.userdata.username,
+                input: data
+            })
         })
         .catch(err=>{
             next(err)

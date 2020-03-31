@@ -3,10 +3,13 @@ const router = express.Router()
 
 const TodoControl = require('../controllers/todoControl')
 
-router.get('/todos', TodoControl.show)
-router.get('/todos/:id', TodoControl.showOne)
-router.post('/todos', TodoControl.create)
-router.put('/todos/:id', TodoControl.edit)
-router.delete('/todos/:id', TodoControl.delete)
+const authentication = require('../middleware/authentication')
+const authorization = require('../middleware/authorization')
+
+router.get('/todos', authentication, TodoControl.show)
+router.get('/todos/:id', authentication, TodoControl.showOne)
+router.post('/todos', authentication, TodoControl.create)
+router.put('/todos/:id', authentication, authorization, TodoControl.edit)
+router.delete('/todos/:id', authentication, authorization, TodoControl.delete)
 
 module.exports = router
