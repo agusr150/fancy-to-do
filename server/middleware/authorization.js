@@ -1,18 +1,15 @@
 const {Todo} = require('../models')
 
 function authorization(req, res, next){
-    Todo.findOne({
-        where: {id: req.params.id}
+    console.log(req.userdata.id)
+    Todo.findAll({
+        where: {UserId: req.userdata.id}
     })
     .then(data=>{
-        if(data.UserId === req.userdata.id){
-            next()
-        } else {
-            res.status(400).json('not authorized')
-        }
+        next()
     })
     .catch(err=>{
-        res.status(400).json('data not found')
+        res.status(500).json(err.message)
     })
 }
 

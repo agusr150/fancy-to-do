@@ -1,12 +1,13 @@
-const {Todo} = require('../models')
+const {Todo, User} = require('../models')
 
 class TodoControl {
     static show(req, res, next){
-        Todo.findAll()
+        Todo.findAll({
+            where: {UserId: req.userdata.id},
+            include: User
+        })
         .then(data=>{
-            res.status(200).json({
-                user: req.userdata.username,
-                data: data})
+            res.status(200).json(data)
         })
         .catch(err=>{
             next(err)
@@ -15,7 +16,8 @@ class TodoControl {
 
     static showOne(req, res, next){
         Todo.findOne({
-            where: {id: req.params.id}
+            where: {id: req.params.id},
+            include: User
         })
         .then(data=>{
             if(data){
@@ -23,7 +25,7 @@ class TodoControl {
                     user: req.userdata.username,
                     data: data})
             } else {
-                res.status(404).json('data not found')
+                res.status(404).json('data not found/ not authorized')
             }
         })
         .catch(err=>{
