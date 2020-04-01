@@ -14,12 +14,16 @@ $(document).ready(function(){
 $(`#btn-register`).click(function(){
     $(`#error`).empty()
     $(`#login`).hide()
+    $(`#register-form`)[0].reset()
     $(`#register`).show()
+    
+    
 })
 
 $(`#btn-login`).click(function(){
     $(`#error`).empty()
     $(`#register`).hide()
+    $(`#login-form`)[0].reset()
     $(`#login`).show()
 })
 
@@ -40,3 +44,35 @@ $(`#btn-cancel-edit`).click(function(){
     $(`#edit`).hide()
     $(`#todos`).show()
 })
+
+$(`#btn-logout`).click(function(){
+    $(`#error`).empty()
+    localStorage.removeItem('token')
+    $(`#login`).show()
+})
+
+function onSignIn(googleUser) {
+    console.log("google ok")
+    var id_token = googleUser.getAuthResponse().id_token;
+    console.log(id_token)
+    $.ajax({
+        type:"POST",
+        url:"http://localhost:3000/user/googlelogin",
+        data:{
+            id_token
+        },
+        success:function(response ){
+            console.log(response)
+            localStorage.setItem("token",response.token)
+            $(`#login`).hide()
+            $(`#todos`).show()
+            todoshow()
+            
+        },
+        error: function(err){
+            console.log(err)
+            $(`#error`).empty()
+            $(`#error`).append(`Error : ${JSON.stringify(err)}`)
+        }
+    })
+  }
