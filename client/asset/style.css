@@ -2,6 +2,11 @@ body {
     background-color: burlywood;
 }
 
+#error {
+    color: red;
+    text-align: center;
+}
+
 .section {
     display: none;
     margin : 40px 80px
