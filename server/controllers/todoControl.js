@@ -7,7 +7,9 @@ class TodoControl {
             include: User
         })
         .then(data=>{
-            res.status(200).json(data)
+            res.status(200).json({
+                user:req.userdata.username,
+                data: data})
         })
         .catch(err=>{
             next(err)

@@ -11,12 +11,10 @@ $(`#login-form`).submit(function (event){
                 password: password
             },
             success: function(result){
-                console.log('login sukses')  
                 localStorage.setItem('token',result.token)         
                 $(`#error`).empty()
                 $(`#login`).hide()
                 $(`#todos`).show()
-                console.log(result)
             },
             error: function(err){
                 console.log(err)

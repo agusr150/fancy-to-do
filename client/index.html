@@ -7,7 +7,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="asset/style.css">
+    <link rel="stylesheet" href="asset/style/style.css">
 
     <title>Fancy Todo</title>
   </head>
@@ -60,9 +60,58 @@
     </div>
 
         <!--    TODO   -->
-        <div id="todos" class="section">
-            <div id="isitodos"></div>
-        </div>
+    <div id="todos" class="section">
+        <h1>Fancy To-Do</h1>
+        <p id="usertodo"></p>
+
+        <button type="button" class="btn btn-primary" id="btn-add">Add Todo</button>
+        <button type="button" class="btn btn-danger" id="btn-logout">Logout</button>
+        
+        <table class="table table-bordered mt-4" id="table-todos">
+            <thead class="p-3 mb-2 bg-primary">
+                <tr>
+                    <th scope="col">Title</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Due Date</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody id="list-todos">
+            
+            </tbody>
+        </table>
+    </div>
+    
+    <!-- Add Todo Form-->
+    <div id="add" class="section">
+        <form id="add-form">
+            <h1>Add Todo Form</h1>
+            <div class="form-group">
+              <label for="title-add">Title</label>
+              <input type="text" class="form-control" id="title-add" placeholder="input title of new todo">
+            </div>
+            <div class="form-group">
+              <label for="description-add">Description</label>
+              <input type="text" class="form-control" id="description-add" placeholder="input description of new todo">
+            </div>
+            <div class="form-group">
+                <label for="due_date-add">Status</label>
+                <input type="date" class="form-control" id="due_date-add" placeholder="input due_date of new todo">
+              </div>
+            <button type="submit" class="btn btn-primary mb-3">Save</button><br>
+            <button type="button" class="btn btn-danger" id="btn-cancel-add">Cancel</button>
+          </form>
+    </div>
+
+    <!-- Edit Todo Form-->
+    <div id="edit" class="section">
+        <h1>Edit Todo Form</h1>
+        <form id="edit-form">
+            
+        </form>
+        <button type="button" class="btn btn-danger" id="btn-cancel-edit">Cancel</button>
+    </div>
 
 
    
@@ -73,8 +122,12 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     
-    <script src="asset/main.js"></script>
-    <script src="asset/register.js"></script>
-    <script src="asset/login.js"></script>
+    <script src="asset/script/main.js"></script>
+    <script src="asset/script/register.js"></script>
+    <script src="asset/script/login.js"></script>
+    <script src="asset/script/todoshow.js"></script>
+    <script src="asset/script/add.js"></script>
+    <script src="asset/script/edit.js"></script>
+    <script src="asset/script//delete.js"></script>
 </body>
 </html>
