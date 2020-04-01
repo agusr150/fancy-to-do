@@ -26,9 +26,8 @@ $(`#add-form`).submit(function (event){
             success: function(result){
                 console.log('okkkk')
                 $(`#error`).empty()
+                $(`#add-form`)[0].reset()
                 $(`#add`).hide()
-                $(`#list-todos`).empty()
-                $(`#usertodo`).empty()
                 $(`#todos`).show()
                 todoshow()
             },

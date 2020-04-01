@@ -8,8 +8,6 @@ function deltodo(id){
         success: function(result){
             console.log(result)
             $(`#error`).empty()
-            $(`#list-todos`).empty()
-            $(`#usertodo`).empty()
             $(`#todos`).show()
             todoshow()
         },

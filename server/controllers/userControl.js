@@ -68,6 +68,7 @@ class UserControl {
                     }
                     else {
                         let obj = {
+                            username: payload.name,
                             email: payload.email,
                             password: "google"
                         }
@@ -76,7 +77,7 @@ class UserControl {
                 })
                 .then(data => {
                     if (data) {
-                        var token = jwt.sign({id: data.id, email: data.email}, 'secret')
+                        var token = jwt.sign({id: data.id, username:data.username ,email: data.email}, 'secret')
                     }
                     res.status(200).json({ token: token })
                 })

@@ -13,8 +13,10 @@ $(`#login-form`).submit(function (event){
             success: function(result){
                 localStorage.setItem('token',result.token)         
                 $(`#error`).empty()
+                $(`#login-form`)[0].reset()
                 $(`#login`).hide()
                 $(`#todos`).show()
+                todoshow()
             },
             error: function(err){
                 console.log(err)

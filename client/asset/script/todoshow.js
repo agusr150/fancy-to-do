@@ -1,5 +1,7 @@
 function todoshow(){
     console.log('masuk todoshow')
+    $(`#usertodo`).empty()
+    $(`#list-todos`).empty()
     let token= localStorage.getItem('token')
     $.ajax({
         type: "GET", 

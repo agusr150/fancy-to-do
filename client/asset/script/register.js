@@ -20,6 +20,7 @@ $(`#register-form`).submit(function (event){
             success: function(result){
                 console.log('okkkk')
                 $(`#error`).empty()
+                $(`#login-form`)[0].reset()
                 $(`#register`).hide()
                 $(`#login`).show()
             },

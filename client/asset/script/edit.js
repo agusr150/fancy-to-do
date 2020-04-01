@@ -89,8 +89,6 @@ $(`#edit-form`).submit(function (event){
                 console.log('okkkk')
                 $(`#error`).empty()
                 $(`#edit`).hide()
-                $(`#list-todos`).empty()
-                $(`#usertodo`).empty()
                 $(`#todos`).show()
                 todoshow()
             },
