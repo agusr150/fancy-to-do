@@ -1,8 +1,9 @@
+require('dotenv').config()
 const {User} = require('../models')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const {OAuth2Client} = require('google-auth-library');
-const client = new OAuth2Client('711583691062-7cd2dhn3jtdoob0n5keu0ajpfsdlfej4.apps.googleusercontent.com');
+const client = new OAuth2Client(process.env.CLIENT_ID);
 
 class UserControl {
     static register (req, res, next){
@@ -33,7 +34,7 @@ class UserControl {
                 res.status(400).json('email wrong')
             } else {
                 if(bcrypt.compareSync(req.body.password, data.password)){
-                    let token = jwt.sign({id: data.id, username:data.username, email: data.email}, 'secret')
+                    let token = jwt.sign({id: data.id, username:data.username, email: data.email}, process.env.JWT_SECRET)
                     res.status(200).json({token: token})
                 } else {
                     res.status(400).json('password worng')
@@ -50,7 +51,7 @@ class UserControl {
         console.log('google controler')
         client.verifyIdToken({
             idToken: req.body.id_token,
-            audience: '711583691062-7cd2dhn3jtdoob0n5keu0ajpfsdlfej4.apps.googleusercontent.com',  // Specify the CLIENT_ID of the app that accesses the backend
+            audience: process.env.CLIENT_ID,  // Specify the CLIENT_ID of the app that accesses the backend
             // Or, if multiple clients access the backend:
             //[CLIENT_ID_1, CLIENT_ID_2, CLIENT_ID_3]
         })
@@ -70,14 +71,14 @@ class UserControl {
                         let obj = {
                             username: payload.name,
                             email: payload.email,
-                            password: "google"
+                            password: process.env.JWT_GOOGLE
                         }
                         return User.create(obj)
                     }
                 })
                 .then(data => {
                     if (data) {
-                        var token = jwt.sign({id: data.id, username:data.username ,email: data.email}, 'secret')
+                        var token = jwt.sign({id: data.id, username:data.username ,email: data.email}, process.env.JWT_SECRET)
                     }
                     res.status(200).json({ token: token })
                 })

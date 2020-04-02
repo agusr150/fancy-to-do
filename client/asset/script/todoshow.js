@@ -17,9 +17,25 @@ function todoshow(){
                 let status = ''
                 if(result.data[i].status === true){
                     status = 'done'
+                    warna = 'blue'
                 } else {
                     status = 'in progress'
+                    warna = 'red'
                 }
+                //check valid due_date
+                let a = new Date(result.data[i].due_date)
+                let b = new Date()
+                let c = new Date('2020-04-11T00:00:00.000Z') - new Date('2020-04-09T00:00:00.000Z') //tow days
+                let d = (a-b) //time from not to due_date
+                console.log(a-b)
+                if (a<b && status==='in progress'){
+                    back='yellow'
+                } else if (d<c && status==='in progress'){
+                    back='lightgreen'
+                } else {
+                    back='cyan'
+                }
+
                 //format date
                 console.log(result.data[i].due_date)
                 let tanggal = result.data[i].due_date
@@ -27,10 +43,10 @@ function todoshow(){
                 let date= tanggal.substring(0,10)
                 console.log(date)
                 $(`#list-todos`).append(`
-                <tr>
+                <tr style="background-color:${back}">
                     <td>${result.data[i].title}</td>
                     <td>${result.data[i].description}</td>
-                    <td>${status}</td>
+                    <td style="color:${warna}">${status}</td>
                     <td>${date}</td>
                     <td>
                         <button type="button" onclick=edit(${result.data[i].id})  class="btn btn-success" id="btn-edit">Edit</button>
