@@ -12,9 +12,9 @@ This application is deployed in heroku for backend and firebase for frontend as 
 Method & URL 
 GET | POST | DELETE | PUT
 Example of method and url can be found in link: 
-''''
+````
 https://documenter.getpostman.com/view/10571187/SzYXWKEt
-''''
+```
 
 
 -----------
@@ -52,7 +52,6 @@ API Open Weather:
 
 This application using weather forecast which is taken from API.
 url for this API can be found :
-''''
+````
 https://openweathermap.org/forecast5
-''''
-
+````
