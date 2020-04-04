@@ -8,7 +8,7 @@ function edit(id){
         success: function(result){
             console.log(result)
             $(`#error`).empty()
-            $(`#todos`).hide()
+            //$(`#todos`).hide()
             $(`#edit-form`).empty()
             $(`#edit`).show()
             // format date
@@ -47,7 +47,7 @@ function edit(id){
                     <input type="date" class="form-control" id="due_date-edit" value="${date}">
                 </div>
                 <button type="submit" class="btn btn-primary mb-3">Save</button><br>
-                
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button> 
             `)
         },
         error: function(err){

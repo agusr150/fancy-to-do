@@ -18,12 +18,13 @@
 
     <!--  Register FORM    -->
     <div id="register" class="section">
+      <div>
         <h1>Register Form</h1>
         <form id="register-form">
             <div class="form-group">
                 <label for="username-reg">Username</label>
                 <input type="username" class="form-control" id="username-reg" placeholder="register your username">
-              </div>
+            </div>
             <div class="form-group">
               <label for="email-reg">Email address</label>
               <input type="email" class="form-control" id="email-reg" placeholder="register your email">
@@ -36,30 +37,41 @@
             <div class="form-group">
                 <label for="repassword-reg">Re-enter Your Password</label>
                 <input type="password" class="form-control" id="repassword-reg" placeholder="re-input your password">
-              </div>
+            </div>
             <button type="submit" class="btn btn-primary">Submit</button>
             <button type="button" class="btn btn-primary" id="btn-login">Back To Login</button>
-          </form>
+        </form>
+      </div>
+      <div id="todo-pic">
+        <img src="./asset/style/to-do.jpg" id="todo-pic">
+      </div>
     </div>
 
 
     <!--     Login FORM   -->
     <div id="login" class="section">
+      <div>
+        <h1>Login Form</h1>
         <form id="login-form">
-            <h1>Login Form</h1>
-            <div class="form-group">
-              <label for="email-login">Email address</label>
-              <input type="email" class="form-control" id="email-login" placeholder="input your email">
-            </div>
-            <div class="form-group">
-              <label for="password-login">Password</label>
-              <input type="password" class="form-control" id="password-login" placeholder="input your password">
-            </div>
-            <button type="submit" class="btn btn-primary mb-3">Login</button><br>
-            Please register if you have never been registered or SignIn using your Google account
+          <div class="form-group">
+            <label for="email-login">Email address</label>
+            <input type="email" class="form-control" id="email-login" placeholder="input your email">
+          </div>
+          <div class="form-group">
+            <label for="password-login">Password</label>
+            <input type="password" class="form-control" id="password-login" placeholder="input your password">
+          </div>
+          <button type="submit" class="btn btn-primary mb-3">Login</button><br>
+          Please register if you have never been registered or SignIn using your Google account<br>
+          <div id="tombol">
             <button type="button" class="btn btn-primary" id="btn-register">Register</button>
-            <div class="g-signin2" data-onsuccess="onSignIn"></div>
-          </form>
+          </div>
+          <div class="g-signin2" data-onsuccess="onSignIn"></div>
+        </form>
+      </div>
+      <div id="todo-pic">
+        <img src="./asset/style/to-do.jpg" id="todo-pic">
+      </div>
     </div>
 
         <!--    TODO   -->
@@ -67,11 +79,14 @@
         <h1>Fancy To-Do</h1>
         <p id="usertodo"></p>
 
-        <button type="button" class="btn btn-primary" id="btn-add">Add Todo</button>
+        <!-- <button type="button" class="btn btn-primary" id="btn-add">Add Todo</button> -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalAdd" data-backdrop="static" data-keyboard="false">
+          Add Task
+        </button>
         <button type="button" class="btn btn-danger" id="btn-logout">Logout</button>
         
         <table class="table table-bordered mt-4" id="table-todos">
-            <thead class="p-3 mb-2 bg-primary">
+            <thead class="p-3 mb-2 bg-secondary">
                 <tr>
                     <th scope="col">Title</th>
                     <th scope="col">Description</th>
@@ -87,34 +102,67 @@
     </div>
     
     <!-- Add Todo Form-->
-    <div id="add" class="section">
-        <form id="add-form">
-            <h1>Add Todo Form</h1>
-            <div class="form-group">
-              <label for="title-add">Title</label>
-              <input type="text" class="form-control" id="title-add" placeholder="input title of new todo">
-            </div>
-            <div class="form-group">
-              <label for="description-add">Description</label>
-              <input type="text" class="form-control" id="description-add" placeholder="input description of new todo">
-            </div>
-            <div class="form-group">
-                <label for="due_date-add">Status</label>
-                <input type="date" class="form-control" id="due_date-add" placeholder="input due_date of new todo">
+    <!-- Modal -->
+    <div class="modal fade" id="modalAdd" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="AddTitle">Add Task</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form id="add-form">
+              <div class="form-group">
+                <label for="title-add">Title</label>
+                <input type="text" class="form-control" id="title-add" placeholder="input title of new todo">
               </div>
-            <button type="submit" class="btn btn-primary mb-3">Save</button><br>
-            <button type="button" class="btn btn-danger" id="btn-cancel-add">Cancel</button>
-          </form>
+              <div class="form-group">
+                <label for="description-add">Description</label>
+                <input type="text" class="form-control" id="description-add" placeholder="input description of new todo">
+              </div>
+              <div class="form-group">
+                  <label for="due_date-add">Status</label>
+                  <input type="date" class="form-control" id="due_date-add" placeholder="input due_date of new todo">
+              </div>
+              <button type="submit" class="btn btn-primary">Save</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
 
+
+
     <!-- Edit Todo Form-->
+    <!-- Modal -->
+    <div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="AddTitle">Edit Task</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form id="edit-form">
+              
+            </form>
+          </div>
+      </div>
+    </div>
+
+<!-- 
     <div id="edit" class="section">
         <h1>Edit Todo Form</h1>
         <form id="edit-form">
             
         </form>
         <button type="button" class="btn btn-danger" id="btn-cancel-edit">Cancel</button>
-    </div>
+    </div> -->
 
 
    

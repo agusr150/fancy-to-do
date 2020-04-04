@@ -3,9 +3,10 @@ const router = express.Router()
 const axios =require('axios')
 
 router.get('/current_weather', function (req, res){ 
+    let city = req.body.city
     axios({
         method: 'get',
-        url: 'http://api.openweathermap.org/data/2.5/weather?q=Jakarta,Indonesia&APPID=d2606a9ee3680c51b60d1b000b2647f4',
+        url: `http://api.openweathermap.org/data/2.5/weather?q=${city},Indonesia&APPID=d2606a9ee3680c51b60d1b000b2647f4`,
     })
     .then(data => {
         console.log(data)

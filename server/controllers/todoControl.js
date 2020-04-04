@@ -4,7 +4,8 @@ class TodoControl {
     static show(req, res, next){
         Todo.findAll({
             where: {UserId: req.userdata.id},
-            include: User
+            include: User,
+            order: [['due_date', 'ASC']]
         })
         .then(data=>{
             res.status(200).json({

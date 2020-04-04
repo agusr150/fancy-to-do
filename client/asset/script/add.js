@@ -27,7 +27,7 @@ $(`#add-form`).submit(function (event){
                 console.log('okkkk')
                 $(`#error`).empty()
                 $(`#add-form`)[0].reset()
-                $(`#add`).hide()
+                $(`#modalAdd`).modal('hide')
                 $(`#todos`).show()
                 todoshow()
             },

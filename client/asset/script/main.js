@@ -8,6 +8,7 @@ $(document).ready(function(){
     } else {
         $(`#error`).empty()
         $(`#login`).show()
+        $(`#register`).hide()
     }
 })
 
@@ -16,8 +17,6 @@ $(`#btn-register`).click(function(){
     $(`#login`).hide()
     $(`#register-form`)[0].reset()
     $(`#register`).show()
-    
-    
 })
 
 $(`#btn-login`).click(function(){

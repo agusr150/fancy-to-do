@@ -11,7 +11,8 @@ function todoshow(){
             console.log(result)
             $(`#error`).empty()
             $(`#login`).hide()
-            $(`#usertodo`).append(`Hi ${result.user}, welcome to Fancy To-Do Application. <br> To create new task, please click add todo`)
+            $(`#register`).hide()
+            $(`#usertodo`).append(`Hi ${result.user}, welcome to Fancy To-Do Application. To create a new task, please click add todo!`)
             for(let i=0; i<result.data.length; i++){
                 //format status
                 let status = ''
@@ -49,6 +50,9 @@ function todoshow(){
                     <td style="color:${warna}">${status}</td>
                     <td>${date}</td>
                     <td>
+                        <button type="button" onclick=edit(${result.data[i].id}) class="btn btn-primary" data-toggle="modal" data-target="#modalEdit" data-backdrop="static" data-keyboard="false">
+                            Edit Task
+                        </button>
                         <button type="button" onclick=edit(${result.data[i].id})  class="btn btn-success" id="btn-edit">Edit</button>
                         <button type="button" onclick=deltodo(${result.data[i].id}) class="btn btn-danger" id="btn-delete">Delete</button>
                     </td>

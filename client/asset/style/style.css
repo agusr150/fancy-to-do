@@ -1,5 +1,5 @@
 body {
-    background-color: burlywood;
+    background-image: url('./Scooter.jpg');
 }
 
 #error {
@@ -16,6 +16,55 @@ h1{
     text-align: center;
 }
 
+label{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 400;
+}
+
+#tombol{
+    margin: 10px 0px
+}
+
+#login{
+    margin: 40px 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+#login-form{
+    width: 500px
+}
+
+#register{
+    margin: 40px 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+#register-form{
+    width: 500px
+}
+
+#todo-pic{
+    height: 450px;
+    width: 450px;
+}
+
+#usertodo{
+    font-weight: 600;
+    text-align: center;
+}
+
 #list-todos{
     background-color: lightblue;
+}
+
+#table-todos{
+    text-align: center;
+}
+
+.modal-header{
+    background-color: lightgrey;
 }
