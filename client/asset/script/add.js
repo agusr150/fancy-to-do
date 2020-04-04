@@ -1,3 +1,8 @@
+function addopen(){
+    $(`#errormodaladd`).empty()
+    $(`#add-form`)[0].reset()
+}
+
 $(`#add-form`).submit(function (event){
     event.preventDefault()
     console.log('masuk add')
@@ -6,12 +11,11 @@ $(`#add-form`).submit(function (event){
     let description= $(`#description-add`).val()
     let status = false
     let due_date = $(`#due_date-add`).val()
-    console.log(due_date)
     let a = new Date(due_date)
     let b = new Date()
     if (a<b){
-        $(`#error`).empty()
-        $(`#error`).append(`Due date shall be in future`)
+        $(`#errormodaladd`).empty()
+        $(`#errormodaladd`).append(`Due date shall be in future`)
     } else {
         $.ajax({
             type: "POST", 
@@ -25,7 +29,7 @@ $(`#add-form`).submit(function (event){
             },
             success: function(result){
                 console.log('okkkk')
-                $(`#error`).empty()
+                $(`#errormodaladd`).empty()
                 $(`#add-form`)[0].reset()
                 $(`#modalAdd`).modal('hide')
                 $(`#todos`).show()
@@ -33,8 +37,8 @@ $(`#add-form`).submit(function (event){
             },
             error: function(err){
                 console.log(err)
-                $(`#error`).empty()
-                $(`#error`).append(`Error : ${err.responseJSON}`)
+                $(`#errormodaladd`).empty()
+                $(`#errormodaladd`).append(`Error : ${err.responseJSON}`)
             }
         })
     }

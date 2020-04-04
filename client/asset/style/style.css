@@ -7,6 +7,16 @@ body {
     text-align: center;
 }
 
+#errormodaladd {
+    color: red;
+    text-align: center;
+}
+
+#errormodaledit {
+    color: red;
+    text-align: center;
+}
+
 .section {
     display: none;
     margin : 40px 80px
@@ -57,6 +67,20 @@ label{
     text-align: center;
 }
 
+#legend{
+    background-color: lightskyblue;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 5px;
+}
+
+#sublegend{
+    font-size: 12px;
+    margin: 3px 10px;
+    padding-left: 5px;
+}
+
 #list-todos{
     background-color: lightblue;
 }
@@ -67,4 +91,14 @@ label{
 
 .modal-header{
     background-color: lightgrey;
+}
+
+#weather {
+    font-size: 14px;
+    color: blue;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: lime;
+    margin: 5px 2px
 }

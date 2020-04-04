@@ -28,21 +28,20 @@ function todoshow(){
                 let b = new Date()
                 let c = new Date('2020-04-11T00:00:00.000Z') - new Date('2020-04-09T00:00:00.000Z') //tow days
                 let d = (a-b) //time from not to due_date
-                console.log(a-b)
                 if (a<b && status==='in progress'){
-                    back='yellow'
+                    back='lightcoral'
                 } else if (d<c && status==='in progress'){
+                    back='yellow'
+                } else if (d>=c && status==='in progress'){
                     back='lightgreen'
                 } else {
                     back='cyan'
                 }
 
                 //format date
-                console.log(result.data[i].due_date)
                 let tanggal = result.data[i].due_date
                 String(tanggal)
                 let date= tanggal.substring(0,10)
-                console.log(date)
                 $(`#list-todos`).append(`
                 <tr style="background-color:${back}">
                     <td>${result.data[i].title}</td>
@@ -51,10 +50,11 @@ function todoshow(){
                     <td>${date}</td>
                     <td>
                         <button type="button" onclick=edit(${result.data[i].id}) class="btn btn-primary" data-toggle="modal" data-target="#modalEdit" data-backdrop="static" data-keyboard="false">
-                            Edit Task
+                            Edit This Task
                         </button>
-                        <button type="button" onclick=edit(${result.data[i].id})  class="btn btn-success" id="btn-edit">Edit</button>
-                        <button type="button" onclick=deltodo(${result.data[i].id}) class="btn btn-danger" id="btn-delete">Delete</button>
+                        <button type="button" onclick=delform(${result.data[i].id}) class="btn btn-danger" data-toggle="modal" data-target="#modalDelete" data-backdrop="static" data-keyboard="false">
+                            Delete This Task
+                        </button>
                     </td>
                 </tr>
                 `)

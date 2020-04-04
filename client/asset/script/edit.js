@@ -7,7 +7,7 @@ function edit(id){
         headers: {token: token},
         success: function(result){
             console.log(result)
-            $(`#error`).empty()
+            $(`#errormodaledit`).empty()
             //$(`#todos`).hide()
             $(`#edit-form`).empty()
             $(`#edit`).show()
@@ -52,8 +52,8 @@ function edit(id){
         },
         error: function(err){
             console.log(err)
-            $(`#error`).empty()
-            $(`#error`).append(`Error : ${err.responseJSON}`)
+            $(`#errormodaledit`).empty()
+            $(`#errormodaledit`).append(`Error : ${err.responseJSON}`)
         }
     })
 }
@@ -69,16 +69,13 @@ $(`#edit-form`).submit(function (event){
     newUpdate.description= $(`#description-edit`).val()
     newUpdate.status = $(`#status-edit`).val()
     newUpdate.due_date = $(`#due_date-edit`).val()
-    // console.log(date)
-    //  newUpdate.due_date = new Date(date)
-    //  console.log(newUpdate.due_date)
     console.log(newUpdate)
-    // console.log(due_date)
     let a = new Date(newUpdate.due_date)
     let b = new Date()
-    if (a<b){
-        $(`#error`).empty()
-        $(`#error`).append(`Update the due date. (Due date shall be in future)`)
+    if (a<b && newUpdate.status==="false"){
+        console.log('due date err')
+        $(`#errormodaledit`).empty()
+        $(`#errormodaledit`).append(`Your due date is expired and your task is not completed. Update your due date`)
     } else {
         $.ajax({
             type: "PUT", 
@@ -86,16 +83,15 @@ $(`#edit-form`).submit(function (event){
             headers: {token: token},
             data: newUpdate,
             success: function(result){
-                console.log('okkkk')
-                $(`#error`).empty()
-                $(`#edit`).hide()
+                $(`#errormodal`).empty()
+                $(`#modalEdit`).modal('hide')
                 $(`#todos`).show()
                 todoshow()
             },
             error: function(err){
-                console.log(err)
-                $(`#error`).empty()
-                $(`#error`).append(`Error : ${err.responseJSON}`)
+                console.log(err.responseJSON)
+                $(`#errormodaledit`).empty()
+                $(`#errormodaledit`).append(`Error : ${err.responseJSON}`)
             }
         })
     }

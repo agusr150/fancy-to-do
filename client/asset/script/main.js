@@ -4,11 +4,15 @@ $(document).ready(function(){
     if(token) {
         $(`#error`).empty()
         $(`#todos`).show()
+        cuaca()
+        console.log('cuaca lewat')
         todoshow()
+        
     } else {
         $(`#error`).empty()
         $(`#login`).show()
         $(`#register`).hide()
+        $(`#todos`).hide()
     }
 })
 
@@ -24,25 +28,6 @@ $(`#btn-login`).click(function(){
     $(`#register`).hide()
     $(`#login-form`)[0].reset()
     $(`#login`).show()
-})
-
-$(`#btn-add`).click(function(){
-    $(`#error`).empty()
-    $(`#todos`).hide()
-    $(`#add`).show()
-})
-
-$(`#btn-cancel-add`).click(function(){
-    $(`#error`).empty()
-    $(`#add-form`)[0].reset()
-    $(`#add`).hide()
-    $(`#todos`).show()
-})
-
-$(`#btn-cancel-edit`).click(function(){
-    $(`#error`).empty()
-    $(`#edit`).hide()
-    $(`#todos`).show()
 })
 
 $(`#btn-logout`).click(function(){

@@ -49,6 +49,8 @@ class UserControl {
 
     static googlelogin(req, res){
         console.log('google controler')
+        console.log(req.body, '000000000')
+        console.log('-----atas req bofdy')
         client.verifyIdToken({
             idToken: req.body.id_token,
             audience: process.env.CLIENT_ID,  // Specify the CLIENT_ID of the app that accesses the backend
@@ -63,28 +65,27 @@ class UserControl {
                     email: payload.email
                 }
             })
-                .then(data => {
-                    if (data) {
-                        return data
+            .then(data => {
+                if (data) {
+                    return data
+                } else {
+                    let obj = {
+                        username: payload.name,
+                        email: payload.email,
+                        password: process.env.JWT_GOOGLE
                     }
-                    else {
-                        let obj = {
-                            username: payload.name,
-                            email: payload.email,
-                            password: process.env.JWT_GOOGLE
-                        }
-                        return User.create(obj)
-                    }
-                })
-                .then(data => {
-                    if (data) {
-                        var token = jwt.sign({id: data.id, username:data.username ,email: data.email}, process.env.JWT_SECRET)
-                    }
-                    res.status(200).json({ token: token })
-                })
-                .catch(err => {
-                    res.status(400).json(err)
-                })
+                return User.create(obj)
+                }
+            })
+            .then(data => {
+                if (data) {
+                    var token = jwt.sign({id: data.id, username:data.username ,email: data.email}, process.env.JWT_SECRET)
+                }
+                res.status(200).json({ token: token })
+            })
+            .catch(err => {
+                res.status(400).json(err)
+            })
         })
 
     }

@@ -80,11 +80,18 @@
         <p id="usertodo"></p>
 
         <!-- <button type="button" class="btn btn-primary" id="btn-add">Add Todo</button> -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalAdd" data-backdrop="static" data-keyboard="false">
+        <button type="button" onclick=addopen() class="btn btn-primary" data-toggle="modal" data-target="#modalAdd" data-backdrop="static" data-keyboard="false">
           Add Task
         </button>
         <button type="button" class="btn btn-danger" id="btn-logout">Logout</button>
-        
+        <div id="weather"></div>
+        <div id="legend">
+          Legend :
+          <div style="background-color:lightcoral" id="sublegend">Task is not completed and late</div>
+          <div style="background-color:yellow" id="sublegend">Less than 2 days to complete the task</div>
+          <div style="background-color:lightgreen" id="sublegend">You still have time to complete the task</div>
+          <div style="background-color:cyan" id="sublegend">Task is completed, you can delete it</div>
+        </div>
         <table class="table table-bordered mt-4" id="table-todos">
             <thead class="p-3 mb-2 bg-secondary">
                 <tr>
@@ -113,6 +120,7 @@
             </button>
           </div>
           <div class="modal-body">
+            <div id="errormodaladd"></div>
             <form id="add-form">
               <div class="form-group">
                 <label for="title-add">Title</label>
@@ -148,24 +156,31 @@
             </button>
           </div>
           <div class="modal-body">
+            <div id="errormodaledit"></div>
             <form id="edit-form">
+              
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+   <!-- Delete Todo -->
+    <!-- Modal -->
+    <div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div id="errormodaldelete"></div>
+            <form id="delete-form">
               
             </form>
           </div>
       </div>
     </div>
 
-<!-- 
-    <div id="edit" class="section">
-        <h1>Edit Todo Form</h1>
-        <form id="edit-form">
-            
-        </form>
-        <button type="button" class="btn btn-danger" id="btn-cancel-edit">Cancel</button>
-    </div> -->
 
 
-   
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 
     <script src="https://apis.google.com/js/platform.js" async defer></script>
@@ -179,6 +194,7 @@
     <script src="asset/script/todoshow.js"></script>
     <script src="asset/script/add.js"></script>
     <script src="asset/script/edit.js"></script>
-    <script src="asset/script//delete.js"></script>
+    <script src="asset/script/delete.js"></script>
+    <script src="asset/script/weather.js"></script>
 </body>
 </html>
