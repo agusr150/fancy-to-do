@@ -3,7 +3,7 @@ function delform(id){
     let token= localStorage.getItem('token')
     $.ajax({
         type: "GET", 
-        url: `http://localhost:3000/todos/${id}`, 
+        url: `https://boiling-taiga-85460.herokuapp.com/todos/${id}`, 
         headers: {token: token},
         success: function(result){
             console.log(result)
