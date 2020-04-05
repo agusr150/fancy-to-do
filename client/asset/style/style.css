@@ -62,6 +62,12 @@ label{
     width: 450px;
 }
 
+#title-main{
+    background-color: lightblue;
+    border-radius: 10px;
+    color:blue
+}
+
 #usertodo{
     font-weight: 600;
     text-align: center;
@@ -73,12 +79,15 @@ label{
     flex-direction: row;
     justify-content: space-between;
     margin-top: 5px;
+    padding-left: 5px;
 }
 
 #sublegend{
     font-size: 12px;
     margin: 3px 10px;
     padding-left: 5px;
+    border-radius: 20px;
+    padding:3px
 }
 
 #list-todos{
@@ -95,10 +104,45 @@ label{
 
 #weather {
     font-size: 14px;
-    color: blue;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    background-color: lime;
     margin: 5px 2px
+}
+
+#back-weather {
+    color: blue;
+    background-color: lightskyblue;
+    min-height: 40px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: 180px 350px auto;
+}
+
+#subweather {
+    font-size: 16px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+}
+
+#city-weather {
+    height: 25px;
+    width: 120px
+}
+
+#title-weather {
+    font-weight:bold; 
+    font-size:20px; 
+    padding-top: 15px;
+}
+
+#isi-weather {
+    padding-top: 15px;
+}
+
+.phelp {
+    color: blue;
+    font-weight: 500;
 }

@@ -76,30 +76,58 @@
 
         <!--    TODO   -->
     <div id="todos" class="section">
+      <div id="title-main">
         <h1>Fancy To-Do</h1>
         <p id="usertodo"></p>
-
-        <!-- <button type="button" class="btn btn-primary" id="btn-add">Add Todo</button> -->
+      </div>
+      <!--Weather show-->
+      <div id="back-weather">
+        <div id="title-weather">
+          Weather forecast 
+        </div>    
+        <div id="isi-weather">
+            <form id="form-weather">
+                <input type="text" id="city-weather" placeholder="City">
+                <select  id="forecast-weather">
+                  <option selected style="font-weight: lighter;">Forecast</option>
+                  <option value="a">in 3 hours</option>
+                  <option value="c">next 6 hours</option>
+                  <option value="d">next 9 hours</option>
+                  <option value="e">next 12 hours</option>
+                  <option value="f">next 24 hours</option>
+                  <option value="g">next 36 hours</option>
+                  <option value="h">next 48 hours</option>
+                </select>   
+                <button type="submit" class="btn btn-success btn-sm" id="btn-weather">Submit</button>
+            </form>
+        </div>
+        <div id="weather"></div>
+      </div>
+        
         <button type="button" onclick=addopen() class="btn btn-primary" data-toggle="modal" data-target="#modalAdd" data-backdrop="static" data-keyboard="false">
           Add Task
         </button>
+        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modalBantu" data-backdrop="static" data-keyboard="false">
+          About Application
+        </button>
         <button type="button" class="btn btn-danger" id="btn-logout">Logout</button>
-        <div id="weather"></div>
+        
         <div id="legend">
-          Legend :
-          <div style="background-color:lightcoral" id="sublegend">Task is not completed and late</div>
-          <div style="background-color:yellow" id="sublegend">Less than 2 days to complete the task</div>
-          <div style="background-color:lightgreen" id="sublegend">You still have time to complete the task</div>
-          <div style="background-color:cyan" id="sublegend">Task is completed, you can delete it</div>
+            Legend :
+            <div style="background-color:lightcoral" id="sublegend">Task is not completed and late</div>
+            <div style="background-color:yellow" id="sublegend">Less than 2 days to complete the task</div>
+            <div style="background-color:lightgreen" id="sublegend">You still have time to complete the task</div>
+            <div style="background-color:cyan" id="sublegend">Task is completed, you can delete it</div>
         </div>
-        <table class="table table-bordered mt-4" id="table-todos">
+        
+        <table class="table table-bordered" id="table-todos">
             <thead class="p-3 mb-2 bg-secondary">
                 <tr>
-                    <th scope="col">Title</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Due Date</th>
-                    <th scope="col">Actions</th>
+                    <th scope="col" style="width:15%">Title</th>
+                    <th scope="col" style="width:45%">Description</th>
+                    <th scope="col" style="width:10%">Status</th>
+                    <th scope="col" style="width:15%">Due Date</th>
+                    <th scope="col" style="width:15%">Actions</th>
                 </tr>
             </thead>
             <tbody id="list-todos">
@@ -128,10 +156,10 @@
               </div>
               <div class="form-group">
                 <label for="description-add">Description</label>
-                <input type="text" class="form-control" id="description-add" placeholder="input description of new todo">
+                <textarea type="text" class="form-control" id="description-add" placeholder="input description of new todo"></textarea>
               </div>
               <div class="form-group">
-                  <label for="due_date-add">Status</label>
+                  <label for="due_date-add">Due Date</label>
                   <input type="date" class="form-control" id="due_date-add" placeholder="input due_date of new todo">
               </div>
               <button type="submit" class="btn btn-primary">Save</button>
@@ -176,10 +204,42 @@
               
             </form>
           </div>
+        </div>
       </div>
     </div>
 
-
+    <!-- Delete Todo -->
+    <!-- Modal -->
+    <div class="modal fade" id="modalBantu" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">About this application</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+                <p class="phelp">Table shows the tasks which have been saved and sorted by due date. They can be edited and deleted</p><br>
+                <p class="phelp">Create list of task:</p> 
+                    <li>click add task</li>
+                    <li>fill all input in the form (due date shall be in future) and save</li>
+                    <li>status is set to be in progress</li><br>
+                <p class="phelp">Edit the task:</p>
+                    <li>click edit this task</li>
+                    <li>change the form as necessary and save</li><br>
+                <p class="phelp">Delete the task:</p>
+                    <li>click delete this task</li>
+                    <li>confirm to delete the task</li><br><br>
+                <p class="phelp">Weather forecast</p>
+                    <li>fill the city and forecast time then click submit</li>
+                    <li>forecast will appear on the side of this form</li>
+                    <li>(internet connection must be available)</li><br>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 

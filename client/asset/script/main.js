@@ -4,8 +4,6 @@ $(document).ready(function(){
     if(token) {
         $(`#error`).empty()
         $(`#todos`).show()
-        cuaca()
-        console.log('cuaca lewat')
         todoshow()
         
     } else {

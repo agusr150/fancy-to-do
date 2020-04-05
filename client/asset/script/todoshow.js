@@ -12,7 +12,7 @@ function todoshow(){
             $(`#error`).empty()
             $(`#login`).hide()
             $(`#register`).hide()
-            $(`#usertodo`).append(`Hi ${result.user}, welcome to Fancy To-Do Application. To create a new task, please click add todo!`)
+            $(`#usertodo`).append(`Hi ${result.user}, welcome to Fancy To-Do Application. To create a new task, please click add task!`)
             for(let i=0; i<result.data.length; i++){
                 //format status
                 let status = ''
@@ -44,16 +44,16 @@ function todoshow(){
                 let date= tanggal.substring(0,10)
                 $(`#list-todos`).append(`
                 <tr style="background-color:${back}">
-                    <td>${result.data[i].title}</td>
+                    <td style="font-weight: bold;">${result.data[i].title}</td>
                     <td>${result.data[i].description}</td>
                     <td style="color:${warna}">${status}</td>
                     <td>${date}</td>
                     <td>
                         <button type="button" onclick=edit(${result.data[i].id}) class="btn btn-primary" data-toggle="modal" data-target="#modalEdit" data-backdrop="static" data-keyboard="false">
-                            Edit This Task
+                            Edit
                         </button>
                         <button type="button" onclick=delform(${result.data[i].id}) class="btn btn-danger" data-toggle="modal" data-target="#modalDelete" data-backdrop="static" data-keyboard="false">
-                            Delete This Task
+                            Delete
                         </button>
                     </td>
                 </tr>
