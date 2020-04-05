@@ -6,7 +6,7 @@ CRUD is applied in this application.
 The example is created in localhost
 
 This application is deployed in heroku for backend and firebase for frontend as following link:
-...will be updated later
+https://todo-firebase-1586074573868.firebaseapp.com
 
 ------------
 Method & URL 
