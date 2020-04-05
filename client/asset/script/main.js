@@ -47,7 +47,7 @@ function onSignIn(googleUser) {
     console.log(id_token)
     $.ajax({
         type:"POST",
-        url:"http://localhost:3000/user/googlelogin",
+        url:"https://boiling-taiga-85460.herokuapp.com/user/googlelogin",
         data:{
             id_token
         },

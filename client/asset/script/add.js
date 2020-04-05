@@ -19,7 +19,7 @@ $(`#add-form`).submit(function (event){
     } else {
         $.ajax({
             type: "POST", 
-            url: "http://localhost:3000/todos", 
+            url: "https://boiling-taiga-85460.herokuapp.com/todos", 
             headers: {token: token},
             data: {
                 title: title,

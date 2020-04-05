@@ -3,7 +3,7 @@ function edit(id){
     let token= localStorage.getItem('token')
     $.ajax({
         type: "GET", 
-        url: `http://localhost:3000/todos/${id}`, 
+        url: `https://boiling-taiga-85460.herokuapp.com/todos/${id}`, 
         headers: {token: token},
         success: function(result){
             console.log(result)
@@ -79,7 +79,7 @@ $(`#edit-form`).submit(function (event){
     } else {
         $.ajax({
             type: "PUT", 
-            url: `http://localhost:3000/todos/${id}`, 
+            url: `https://boiling-taiga-85460.herokuapp.com/todos/${id}`, 
             headers: {token: token},
             data: newUpdate,
             success: function(result){

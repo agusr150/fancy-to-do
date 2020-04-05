@@ -5,7 +5,7 @@ $(`#login-form`).submit(function (event){
         console.log("masukkk")
         $.ajax({
             type: "POST", 
-            url: "http://localhost:3000/user/login", 
+            url: "https://boiling-taiga-85460.herokuapp.com/user/login", 
             data: {
                 email: email,
                 password: password

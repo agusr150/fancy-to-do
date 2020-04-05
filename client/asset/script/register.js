@@ -11,7 +11,7 @@ $(`#register-form`).submit(function (event){
         console.log({username, email, password})
         $.ajax({
             type: "POST", 
-            url: "http://localhost:3000/user/register", 
+            url: "https://boiling-taiga-85460.herokuapp.com/user/register", 
             data: {
                 username: username,
                 email: email,

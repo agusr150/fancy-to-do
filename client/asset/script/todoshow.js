@@ -5,7 +5,7 @@ function todoshow(){
     let token= localStorage.getItem('token')
     $.ajax({
         type: "GET", 
-        url: "http://localhost:3000/todos", 
+        url: "https://boiling-taiga-85460.herokuapp.com/todos", 
         headers: {token: token},
         success: function(result){
             console.log(result)
